@@ -1,0 +1,426 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'inter';
+    src: url('./assets/fonts/Inter-VariableFont_slnt\,wght.ttf') format('woff2'),
+}
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+$xxxl: 1600px;
+
+$almost-white: #FFFDFA;
+$dark-space-blue: #00001A;
+$gun-metal: #5E607A;
+$light-vermillion: #F15D51;
+$silver: #C5C6CE;
+$yellow: #E9AA52;
+
+html {
+	font-size: 5px;
+    font-family: inter;
+    overflow-x: hidden;
+	
+    // Media Queries
+    @media (min-width: $md) {
+        font-size: 5.5px;
+    }
+
+    @media (min-width: $lg) {
+        font-size: 6.25px;
+    }
+
+    @media (min-width: $xl) {
+        font-size: 7px;
+    }
+
+    @media (min-width: $xxl) {
+        font-size: 8.5px;
+    }
+
+    @media (min-width: $xxxl) {
+        font-size: 10px;
+    }
+}
+
+body {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: $almost-white;
+}
+
+.container {
+    padding: 5.6rem 0;
+    width: min(calc(100% - 6.4rem), 150rem);
+
+    // Media Queries
+    @media (min-width: $md) {
+        padding: 8.9rem 0;
+    }
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6.4rem;
+
+    // Media Queries
+    @media (min-width: $md) {
+        margin-bottom: 5.5rem;    
+    }
+
+    ul {
+        display: flex;
+        transition: all 0.5s ease;
+
+        // Media Quueries
+        @media (max-width: $md) {
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $almost-white;
+            height: 100vh;
+            width: 70%;
+            transform: translateX(100%); 
+            padding: 28.8rem 4.8rem 0 4.8rem;
+        }
+    }
+
+    li {
+        list-style-type: none;
+        font-size: 3.6rem;
+        cursor: pointer;
+
+        // Media Queries
+        @media (min-width: $md) {
+            font-size: 1.5rem;
+        }
+
+        &:not(:last-child) {
+
+            // Media Queries
+            @media (min-width: $md) {
+                margin-right: 4rem;
+            }
+            
+            @media (max-width: $md) {
+                margin-bottom: 4.8rem;
+            }
+        }
+    }
+
+    a {
+        color: $gun-metal;
+        text-decoration: none;
+
+        &:hover {
+            color: $light-vermillion;
+        }
+    }
+
+    .open, .close {
+        cursor: pointer;
+
+        // Media Queries
+        @media (min-width: $md) {
+            display: none;    
+        }
+    }
+
+    .close {
+        transition: all 0.5s ease;
+        display: none;
+    }
+
+    &--open {
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: $dark-space-blue;
+            opacity: 0.4;
+        }
+
+        ul {
+            right: 0;
+            transform: translateX(0); 
+        }
+
+        .open {
+            display: none;
+        }
+
+        .close {
+            display: block;
+            z-index: 1;
+            position: absolute;
+            top: 5.46rem;
+            right: 4.16rem;
+        }
+    }
+}
+
+.hero {
+    display: grid;
+    
+    // Media Queries
+    @media (max-width: $md) {
+        row-gap: 4.8rem;
+    }
+
+    @media (min-width: $md) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+
+    img {
+        width: 100%;
+
+        // Media Queries
+        @media (min-width: $md) {
+            grid-column: span 2;
+        }
+
+        &:nth-of-type(1) {
+
+            // Media Queries
+            @media (max-width: $sm) {
+                display: none;
+            }
+        }
+
+        &:nth-of-type(2) {
+
+            // Media Queries
+            @media (min-width: $sm) {
+                display: none;
+            }
+        }
+    }
+
+    h1 {
+        font-size: 5.6rem;
+        line-height: 1;
+
+        br {
+            // Media Queries
+            @media (max-width: $md) {
+                display: none;
+
+            }
+        }
+    }
+
+    &__cta {
+        display: grid;
+        align-content: space-between;
+
+        p {
+            font-size: 3rem;
+            margin-bottom: 4.8rem;
+            color: $gun-metal;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+
+            // Media Queries
+            @media (min-width: $md) {
+                font-size: 1.5rem; 
+                margin-bottom: 2.9rem; 
+            }
+        }
+
+        button {
+            color: $dark-space-blue;
+            background-color: $light-vermillion;
+            border: none;
+            padding: 1.3rem 3.5rem;
+            cursor: pointer;
+            width: fit-content;
+            font-size: 2.8rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+
+            // Media Queries 
+            @media (min-width: $md) {
+                font-size: 1.4rem;   
+            }
+
+            &:hover {
+                background-color: $dark-space-blue;
+                color: $almost-white;
+            }
+        }
+    }
+
+    &__news {
+        background-color: $dark-space-blue;
+        padding: 4.8rem 4.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        // Media Queries
+        @media (max-width: $md) {
+            margin-top: 8rem;
+        }
+
+        @media (min-width: $md) {
+            grid-column-start: 3;
+            grid-row: 1 / span 2;
+            padding: 3.2rem 2.4rem;
+        }
+
+        &-item {
+            margin-bottom: 6rem;
+            cursor: pointer;
+
+            // Media Queries
+            @media (min-width: $md) {
+                margin-bottom: 3rem;
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $gun-metal;
+            }
+        }
+
+        h2 {
+            color: $yellow;
+            font-size: 6.4rem;
+            margin-bottom: 7rem;
+
+            // Media Queries
+            @media (min-width: $md) {
+                font-size: 4rem;
+                margin-bottom: 3.5rem;
+            }
+        }
+
+        h3 {
+            font-weight: 600;
+            color: $almost-white;
+            font-size: 4rem;
+            margin-bottom: 3rem;
+            transition: all 0.1s ease;
+
+            // Media Queries
+            @media (min-width: $md) {
+                font-size: 2rem;  
+                margin-bottom: 1.5rem;
+            }
+
+            &:hover {
+                color: $yellow;
+            }
+        }
+
+        p {
+            color: $silver;
+            font-size: 3rem;
+            margin-bottom: 6rem;
+
+            // Media Queries
+            @media (min-width: $md) {
+                font-size: 1.5rem;
+                margin-bottom: 3rem;
+            }
+        }
+    }
+
+    &__cards-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 12.8rem;
+        gap: 6rem;
+        
+        // Media Queries
+        @media (min-width: $md) {
+            margin-top: 7rem;
+            gap: 3rem;
+            grid-template-columns: repeat(3,1fr);
+            
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: row;
+
+        img {
+            max-width: 100%;
+            height: auto;
+            width: 26rem;
+
+            // Media Queries
+            @media (min-width: $md) {
+                width: 12.6rem;
+            }
+        }
+
+        &-content {
+            margin-left: 4.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h3 {
+            font-size: 6.4rem;
+            color: $light-vermillion;
+            margin-bottom: 2.4rem;
+
+            // Media Queries
+            @media (min-width: $md) {
+                font-size: 3.2rem;
+                margin-bottom: 1.2rem;  
+            }
+        }
+
+        h4 {
+            font-size: 3.6rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: all 0.1s ease;
+
+            // Media Queries
+            @media (min-width: $md) {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;     
+            }
+
+            &:hover {
+                color: $light-vermillion;
+            }
+        }
+
+        p {
+            font-size: 3rem;
+            line-height: 5.2rem;
+            color: $gun-metal;
+
+            // Media Queries
+            @media (min-width: $md) {
+                font-size: 1.5rem;
+                line-height: 2.6rem;
+            }
+        }
+    }
+}
