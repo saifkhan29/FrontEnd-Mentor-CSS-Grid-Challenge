@@ -99,7 +99,6 @@ body {
 @media (min-width: 768px) {
   .navbar li:not(:last-child) {
     margin-right: 4rem;
-    margin-bottom: 4.8rem;
   }
 }
 @media (max-width: 768px) {
